@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Receipt #{{ d['id'] }}</title>
+  <style>
+    body{font-family:Arial;margin:24px;background:#f7fbff}
+    .box{max-width:720px;margin:auto;background:white;padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
+    .logo-row{display:flex;align-items:center;gap:12px}
+    h2{margin:8px 0}
+    .muted{color:#6b7280}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="logo-row">
+      <img src="{{ charity_logo }}" style="height:60px" alt="logo"><img src="{{ url_for('static', filename='logos/charity_logo.png') }}" 
+     alt="Charity Logo" style="width:120px;">
+      <div>
+        <h2>Donation Receipt</h2>
+        <div class="muted">Receipt ID: {{ d['id'] }} | Date: {{ d['timestamp'] }}</div>
+      </div>
+      <img src="{{ url_for('static', filename='logos/trusted_logo.png') }}" 
+     alt="Trusted Logo" style="width:120px;">
+    </div>
+
+    <hr>
+
+    <h3>Donor Details</h3>
+    <p><strong>Name:</strong> {{ d['donor_name'] }}</p>
+    <p><strong>Address:</strong> {{ d['donor_address'] }}</p>
+    <p><strong>Mobile:</strong> {{ d['donor_mobile'] }}</p>
+    <p><strong>Email:</strong> {{ d['donor_email'] }}</p>
+
+    <h3>Donation</h3>
+    <p><strong>Charity:</strong> {{ d['charity_name'] }}</p>
+    <p><strong>Amount:</strong> ₹{{ '{:.2f}'.format(d['amount']) }}</p>
+
+    <div style="margin-top:18px">
+      <a href="/receipt/{{ d['id'] }}?pdf=1" class="btn">Download PDF</a>
+    </div>
+  </div>
+</body>
+</html>

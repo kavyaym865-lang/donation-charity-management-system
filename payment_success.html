@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Payment Successful</title>
+  <style>
+    body{font-family:Arial;background:#f7fbff;margin:0;padding:30px}
+    .box{max-width:720px;margin:auto;background:white;padding:24px;border-radius:12px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
+    h2{margin-top:0;color:#0f172a}
+    .muted{color:#64748b}
+    .btn{background:#0ea5a4;color:white;padding:10px 14px;border-radius:8px;text-decoration:none}
+    .btn-outline{background:transparent;border:1px solid #0ea5a4;color:#0ea5a4;padding:10px 14px;border-radius:8px;text-decoration:none}
+    .toprow{display:flex;gap:12px;align-items:center}
+    .toprow img{height:54px}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="toprow">
+      <img src="{{ charity_logo }}" alt="charity_logo">
+      <div>
+        <h2>❤️ Payment Successful</h2>
+        <p class="muted">Thank you, {{ d['donor_name'] }} — your generous donation means a lot.</p>
+      </div>
+      <img src="{{ trusted_logo }}" style="height:44px;margin-left:auto" alt="trusted_logo">
+    </div>
+
+    <hr style="margin:16px 0">
+
+    <p><strong>Donation Details</strong></p>
+    <p>Charity: {{ d['charity_name'] }}</p>
+    <p>Amount: ₹{{ '{:.2f}'.format(d['amount']) }}</p>
+    <p>Date: {{ d['timestamp'] }}</p>
+
+    <div style="margin-top:18px;display:flex;gap:10px">
+      <a class="btn" href="/receipt/{{ d['id'] }}">View Receipt</a>
+      <a class="btn-outline" href="/receipt/{{ d['id'] }}?pdf=1">Download PDF Receipt</a>
+      <a style="margin-left:auto" class="btn-outline" href="/home">Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

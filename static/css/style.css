@@ -1,0 +1,59 @@
+/* General layout */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Welcome box */
+.welcome-box {
+    text-align: center;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+.welcome-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #222;
+}
+
+.welcome-quote {
+    font-size: 20px;
+    font-style: italic;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Buttons */
+.btn, .btn-outline {
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+}
+
+.btn {
+    background: #0066ff;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background: #004edb;
+}
+
+.btn-outline {
+    border: 2px solid #0066ff;
+    color: #0066ff;
+    background: white;
+}
+
+.btn-outline:hover {
+    background: #0066ff;
+    color: white;
+}

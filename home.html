@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <form method="get" action="/" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search charities..." value="{{ q }}">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+
+    <div class="row">
+        {% for charity in charities %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+
+                {% if charity["image_url"] %}
+                <img src="{{ charity['image_url'] }}" class="card-img-top" alt="Charity Image">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ charity["name"] }}</h5>
+                    <p class="card-text">{{ (charity["purpose"] | default(''))[:120] }}...</p>
+                    <p class="text-muted mb-1">Category: {{ charity["category"] }}</p>
+
+                    {% set collected = charity["money_required"] | default(0) %}
+                    {% set goal = charity["money_required"] | default(1) %}
+                    {% set pct = (collected / goal * 100) | round(2) %}
+                    <div class="progress mb-3">
+                        <div class="progress-bar" style="width: {{ pct }}%;"></div>
+                    </div>
+
+                    <a href="{{ url_for('charity_detail', cid=charity['id']) }}" class="btn btn-success w-100">
+                        View & Donate
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

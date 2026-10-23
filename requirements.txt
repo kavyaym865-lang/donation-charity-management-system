@@ -1,0 +1,8 @@
+flask
+werkzeug
+stripe
+weasyprint
+reportlab
+Flask-Mail
+qrcode[pil]
+tabulate

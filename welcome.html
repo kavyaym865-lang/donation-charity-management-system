@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<center>
+    <h1>Welcome to Donation & Charity Management</h1>
+    <p style="font-size:20px; font-style:italic;">
+        “Giving is not just about making a donation, it is about making a difference.”
+    </p>
+
+    <br><br>
+
+    <!-- Button Styles -->
+    <style>
+        .btn-login {
+            background-color: #007bff;      /* Blue */
+            color: #fff;                    /* White text */
+            padding: 10px 25px;
+            border-radius: 6px;
+            border: none;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .btn-register {
+            background-color: #ffffff;      /* White */
+            color: #007bff;                 /* Blue text */
+            padding: 10px 25px;
+            border-radius: 6px;
+            border: 2px solid #007bff;      /* Blue border */
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3;      /* Darker blue on hover */
+            color: #fff;
+        }
+
+        .btn-register:hover {
+            background-color: #e6f0ff;      /* Light blue background */
+            color: #0056b3;
+        }
+    </style>
+
+    <!-- Buttons -->
+    <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+    &nbsp;&nbsp;
+    <a href="{{ url_for('register') }}" class="btn-register">Register</a>
+
+</center>
+
+{% endblock %}

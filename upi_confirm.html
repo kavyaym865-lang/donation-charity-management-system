@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UPI Payment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f6f6;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h2>Confirm Your UPI Donation</h2>
+    <p><strong>Transaction ID:</strong> {{ txn }}</p>
+
+    <form method="POST">
+
+        <label>Donor Name</label>
+        <input type="text" name="donor_name" placeholder="Your Name">
+
+        <label>Donor Address</label>
+        <textarea name="donor_address" placeholder="Your Address"></textarea>
+
+        <label>Mobile Number</label>
+        <input type="text" name="donor_mobile" placeholder="Your Mobile">
+
+        <label>Email</label>
+        <input type="email" name="donor_email" placeholder="Your Email">
+
+        <!-- ★ Added Aadhaar field (optional, validated in backend) -->
+        <label>Aadhaar Number (optional)</label>
+        <input type="text" name="aadhaar" maxlength="12" placeholder="12-digit Aadhaar">
+
+        <label>Donation Amount (INR)</label>
+        <input type="number" name="amount" required>
+
+        <button type="submit">Submit Donation</button>
+    </form>
+
+</div>
+</body>
+</html>

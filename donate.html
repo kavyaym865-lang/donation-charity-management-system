@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f7;
+            padding: 25px;
+        }
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.15);
+        }
+        h2, h3 { text-align: center; }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #eee;
+        }
+        .upi-box {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Donate to {{ c.name }}</h2>
+
+    <!-- MERGED PAYMENT FORM -->
+    <form id="donationForm" method="POST" action="{{ url_for('create_checkout_session', cid=c.id) }}">
+
+        <div class="section-title">Donor Information</div>
+
+        <label>Donor Name</label>
+        <input type="text" name="donor_name" required>
+
+        <label>Donor Address</label>
+        <textarea name="donor_address"></textarea>
+
+        <label>Mobile Number</label>
+        <input type="text" name="donor_mobile">
+
+        <label>Email</label>
+        <input type="email" name="donor_email">
+
+        <label>Aadhaar Number</label>
+        <input type="text" name="aadhaar" maxlength="12" placeholder="12-digit Aadhaar">
+
+        <label>Donation Amount (INR)</label>
+        <input type="number" name="amount" id="upi-amount" required min="1">
+
+        <button type="submit">Donate via STRIPE (Card Payment)</button>
+
+        <br><br>
+
+        <div class="section-title">UPI Payment Method</div>
+
+        <div class="upi-box">
+            <p>Scan QR Code → Pay → Enter Transaction ID → Confirm</p>
+
+            <img src="/generate_qr?amount=100" id="upiQR" style="width:200px;height:200px;border:1px solid #ccc;">
+
+            <br><br>
+
+            <label><b>Enter UPI Transaction ID</b></label>
+            <input type="text" id="userTxn" placeholder="Enter Transaction ID">
+
+            <button type="button" onclick="submitUPI()">Confirm UPI Payment</button>
+
+        </div>
+
+    </form>
+</div>
+
+<script>
+    const qrImg = document.getElementById('upiQR');
+    const amountInput = document.getElementById('upi-amount');
+
+    // Generate random transaction ID
+    function generateTxnId() {
+        return Math.random().toString(36).substring(2, 14);
+    }
+
+    // Update QR dynamically
+    function updateQR() {
+        const amt = amountInput.value || 1;
+        qrImg.src = `/generate_qr?amount=${amt}`;
+    }
+
+    amountInput.addEventListener('input', updateQR);
+    updateQR();
+
+    // Submit UPI payment with user-entered transaction id
+    function submitUPI() {
+        const txn = document.getElementById('userTxn').value.trim();
+        const amount = amountInput.value;
+
+        if (txn.length < 5) {
+            alert("Please enter a valid transaction ID.");
+            return;
+        }
+
+        window.location.href = `/upi-success/{{ c.id }}?txn=${txn}&amount=${amount}`;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Download Donation Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            padding: 50px;
+        }
+        .container {
+            background: #fff;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            color: green;
+        }
+        p {
+            font-size: 16px;
+        }
+        a.button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        a.button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donation Receipt</h1>
+        <p>Your donation has been successfully processed. You can download your receipt by clicking the button below.</p>
+        <!-- Replace {{ receipt_file }} with the actual file path from Flask -->
+        <a href="{{ receipt_file }}" download class="button">Download Receipt</a>
+    </div>
+</body>
+</html>
+
+{% endblock %}
