@@ -1,33 +1,61 @@
 # Donation & Charity Management System
 
-A web-based platform developed to simplify charity management, donor registration, and digital donation tracking.
+A web-based college mini-project developed to simplify charity browsing, donor registration, and donation management using Python, Flask, HTML, and CSS.
+
+## About the Project
+
+The Donation & Charity Management System provides a platform where users can explore charity organizations, view charity details, register for an account, and follow a QR-code-based donation workflow. It also includes administrative pages for managing charity information and viewing donation records.
+
+The project aims to make charity information easier to access and demonstrate how web technologies can support donation management.
 
 ## Features
+
 - User registration and login
-- Charity listing and donation management
-- Admin dashboard for managing charities and donations
-- Donation receipts
-- QR-based payment workflow
+- Browse and view charity information
+- Donation form with QR-code-based payment workflow
+- Donation receipt pages
+- Admin login and dashboard
+- Charity and donation management interfaces
 
 ## Technologies Used
+
 - **Backend:** Python, Flask
 - **Frontend:** HTML, CSS
-- **Database:** SQLite *(confirm this matches your app.py)*
+- **Database:** SQLite, if configured in the current application
+- **Development Environment:** Visual Studio Code
+- **QR Code:** QR-code image and supporting Python code
 
-## Project Purpose
-This project aims to make charity management more organized by providing a platform for managing charity information, donor accounts, donations, and receipts.
+## Project Structure
 
-## How to Run
-1. Clone or download this repository.
-2. Install the required dependencies:
+- `app.py` — Main Flask application
+- `requirements.txt` — Python dependencies
+- `schema.sql` — Database schema
+- `templates/` — HTML pages for users, donations, and administration
+- `static/` — CSS, images, logos, and QR-code assets
+
+## How to Run Locally
+
+1. Install Python 3.
+2. Clone or download this repository.
+3. Open a terminal in the project folder.
+4. Install the required dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the application:
+
+5. Start the application:
+
    ```bash
    python app.py
    ```
-4. Open the local URL shown in your terminal in a web browser.
 
-## Note
-This is an academic mini-project. Use test data and dummy payment details when demonstrating the application. Do not upload real donor information, database backups, or secret API keys.
+6. Open the local address displayed in the terminal in your browser.
+
+Database setup may be required depending on the application's configuration.
+
+## Academic Project Notice
+
+This project was developed for academic purposes as a college mini-project. The QR-code payment workflow is intended for demonstration. Actual payment verification and successful transaction processing should not be assumed unless implemented and tested.
+
+Use dummy data for demonstrations. Do not commit real donor information, database files containing private records, passwords, or payment API secret keys to a public repository.
